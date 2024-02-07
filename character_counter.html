@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        main {
+            height: 100vh;
+            width: 100%;
+        }
+        .container {
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            padding: 40px 35px;
+            border: 1px solid green;
+            border-radius: 8px;
+            box-shadow: 0 0 10px 2px green;
+        }
+        .container h1 {
+            color: green;
+            font-size: 45px;
+            text-align: center;
+        }
+        .container h2 {
+            color: #fff;
+            text-align: center;
+            margin: 20px auto;
+            font-size: 30px;
+            color: green;
+        }
+        #input-el { 
+            padding: 20px;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            resize: none;
+            background: rgba(0, 0, 0, 0.2);
+            color: #ffa;
+        }
+         /* width */
+        #input-el::-webkit-scrollbar {
+            width: 5px;
+            }
+
+            /* Track */
+            #input-el::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            }
+
+            /* Handle */
+            #input-el::-webkit-scrollbar-thumb {
+            background: green;
+            border-radius: 10px;
+            }
+        .container button {
+            padding: 15px;
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            color: #ffa;
+            font-family: 'Poppins', sans-serif;
+            background: rgba(0, 255, 0, 0.3);
+            font-size: 18px;
+            font-weight: 700px;
+        }
+        select {
+            padding: 18px;
+            width: 80%;
+            border-radius: 10px;
+            outline: none;
+            border: none;
+            background: rgba(0, 255, 0, 0.3);
+            color: #fff;
+            appearance: none;
+            background-image: url(bg/dropdown-icon-clipart-2.jpg);
+            background-repeat: no-repeat;
+            background-size: 15px;
+            background-position-x: calc(100% - 20px);
+            background-position-y: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h1>Character Counter</h1>
+            <h2 id="counter"></h2>
+            <textarea name="" id="input-el" cols="30" rows="10" placeholder="Enter your text...."></textarea>
+            <div>
+                <select></select>
+                <button id="count-btn">Read</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        const counter = document.querySelector('#counter');
+        const content = document.querySelector('#input-el');
+        const count = document.querySelector('#count-btn');
+        const speech = new SpeechSynthesisUtterance();
+        let voices = '';
+        let voiceSelect = document.querySelector('select');
+        
+        content.addEventListener('input', ()=>{
+            let result = (content.value).length;
+            counter.textContent = result < 10 ? '0' + result : result;
+        });
+        
+        window.speechSynthesis.onvoiceschanged = () => {
+            voices = window.speechSynthesis.getVoices();
+            if(voices){
+                
+                speech.voice = voices[0];
+
+                voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
+            }
+            else{
+                voiceSelect.options[0] = new Option('No voices found', 0)
+            }
+            
+        }
+
+        voiceSelect.addEventListener('change', ()=>{
+            speech.voice = voices[voiceSelect.value];
+        })
+        count.addEventListener('click', () => {
+            speech.text = content.value;
+            window.speechSynthesis.speak(speech);
+            console.log(content.value)
+        });
+    </script>
+</body>
+</html>
