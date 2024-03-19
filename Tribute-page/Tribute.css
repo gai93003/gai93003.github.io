@@ -1,0 +1,242 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  background: #080808;
+  color: #fff;
+}
+header{
+  text-align: center;
+  padding: 50px;
+  padding-bottom: 7px;
+}
+header h1{
+  font-size: 45px;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, #fff, #ff004f);
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 20px;
+}
+figure{
+  max-width: 93%;
+  margin: 10px auto 20px;
+}
+figure img{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+figure figcaption{
+  color: #ababab;
+  margin-top: 10px;
+}
+.educational {
+  width: 93%;
+  background: #262626;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 30px 40px;
+  border-radius: 6px;
+}
+.educational h2{
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 33px;
+  color: #ff004f;
+  transition: transform 0.8s;
+}
+.background ul{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.background ul li strong{
+  color: #b54769;
+  font-size: 18px;
+}
+.background ul li{
+  color: linen;
+  font-size: 17px;
+  line-height: 20px;
+  /*letter-spacing: 0.003px;*/
+}
+.autonomous-region{
+  background: #262626;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 30px;
+  width: 93%;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.autonomous-region h2{
+  text-align: center;
+  font-size: 30px;
+  color: #ff004f;
+  transition: transform 0.8s;
+}
+.autonomous-region h2:hover,
+.educational h2:hover,
+.personal-life h2:hover{
+  transform: scale(1.1)
+}
+.region-in-office{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.region, .in-office{
+  background-color: rgb(20, 30, 40);
+  padding: 20px 5px 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+  transition: background 1s;
+}
+.region-in-office .region h3, .in-office h3{
+  font-size: 23px;
+  margin-bottom: 15px;
+  color: #00beef;
+}
+.region div, .in-office div{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.region div strong, .in-office div strong{
+  flex-basis: 35%;
+  white-space: nowrap;
+  color: #b54769;
+}
+.region div p, .in-office div p{
+  flex-basis: 60%;
+  margin-left: 20px;
+}
+.region:hover, .in-office:hover{
+  background: linear-gradient(145deg, rgb(20, 30, 40), #ff004f);
+  /*transform: translateX(1px);*/
+}
+.personal-life {
+  background: #262626;
+  width: 93%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+.personal-life h2{
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ff004f;
+  opacity: 0.9;
+  transition: transform 0.8s;
+}
+.personal-life .personal-details {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 5px;
+  /*transition: border-bottom 0.5s;*/
+}
+.personal-life .personal-details h3{
+  flex-basis: 35%;
+  color: #b54769;
+  font-size: 23px;
+  transition: transform 0.3s;
+}
+.personal-life .personal-details div{
+  flex-basis: 70%;
+}
+.personal-life .personal-details h3:hover{
+  transform: scale(1.1);
+  color: #ff004f;
+}
+.personal-life .personal-details:hover{
+  border-bottom: 2px solid #ff004f;
+}
+
+
+@media only screen and (max-width: 600px){
+  header{
+    padding: 10px 5px;
+  }
+  header h1{
+    font-size: 33px;
+  }
+  section{
+    gap: 3px;
+  }
+  figure{
+    width: 100%;
+    margin: 0 aut0;
+  }
+  figcaption{
+    font-size: 14px;
+    margin-top: 3px;
+  }
+  .educational, .autonomous-region, .personal-life{
+    width: 99%;
+    padding: 10px;
+  }
+  .educational{
+    padding-left: 20px;
+  }
+  .educational h2, .autonomous-region h2, .personal-life h2{
+    font-size: 24px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+  }
+  .region, .in-office{
+    padding: 10px;
+    margin: 0 auto;
+    gap: 10px;
+    width: 90%;
+  }
+  .personal-life .personal-details {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    /*transition: border-bottom 0.5s;*/
+  }
+  .personal-details h3{
+    font-size: 10px;
+  }
+}
+@media only screen and (min-width: 768px){
+  figure,
+  .educational, 
+  .autonomous-region, 
+  .personal-life{
+    width: 80%;
+  }
+}
+@media screen and (min-width: 1024px){
+  .personal-details {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .educational {
+    width: 80%;
+    margin: 0 auto;
+    
+  }
+}
